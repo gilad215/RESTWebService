@@ -16,6 +16,7 @@ public class LevelService {
     @Path("{name}")
     public String getSolution(@PathParam("name") String name)
  {
+     System.out.println("TRTING TO FETCH SOLUTION FOR:"+name);
      if(dbHandler.getSolution(name)!=null)
         return dbHandler.getSolution(name);
      else

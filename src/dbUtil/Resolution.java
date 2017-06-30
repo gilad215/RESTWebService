@@ -21,14 +21,13 @@ public class Resolution {
         this.solution=solution;
     }
 
+    public String getLevelName() {
+        return LevelName;
+    }
 
     @Override
     public String toString()
     {
-        String str="ID:"+this.LevelName+" Resolution:"+solution;
-        return str;
-    }
-    public String getLevelName() {
         return LevelName;
     }
 

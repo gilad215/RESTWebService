@@ -27,18 +27,12 @@ public class dbHandler {
 
     public String getSolution(String lvlid)
     {
-        StringBuilder search= new StringBuilder(lvlid);
-        while(search.length()<10)
-        {
-            search.append(" ");
-        }
         ObservableList<Resolution> solutions= FXCollections.observableArrayList();
         Query<Resolution> query=HibernateUtil.getSessionFactory().openSession().createQuery("from Solutions");
-        System.out.println(query.list().toString());
         Resolution solution=new Resolution();
         for (Resolution r:query.list()) {
-            System.out.println("REQUESTED:"+lvlid.toUpperCase()+"SIZE:"+lvlid.length()+" CHECKING ON:"+r.getLevelName().toUpperCase()+"SIZE:"+r.getLevelName().length());
-            if(r.getLevelName().equals(search.toString()))
+            System.out.println("REQUESTED: "+lvlid+"SIZE: "+lvlid.length()+" CHECKING ON:"+r.getLevelName()+" SIZE:"+r.getLevelName().length());
+            if(r.getLevelName().startsWith(lvlid))
             {
                 System.out.println("FOUND SOLUTION!");
                 HibernateUtil.getSessionFactory().getCurrentSession().close();
